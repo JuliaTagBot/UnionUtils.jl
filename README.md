@@ -1,7 +1,25 @@
 # UnionUtils
 
-[![Build Status](https://travis-ci.org/quinnj/UnionUtils.jl.svg?branch=master)](https://travis-ci.org/quinnj/UnionUtils.jl)
+This is a very simple package providing a few helper methods for working with `Union` types and `Nothing` in Julia.
 
-[![Coverage Status](https://coveralls.io/repos/quinnj/UnionUtils.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/quinnj/UnionUtils.jl?branch=master)
+To install this package, do:
+```julia
+Pkg.add("UnionUtils")
+```
 
-[![codecov.io](http://codecov.io/github/quinnj/UnionUtils.jl/coverage.svg?branch=master)](http://codecov.io/github/quinnj/UnionUtils.jl?branch=master)
+This package offers the following features:
+
+#### Union types |
+```julia
+struct T
+    x::(Int|String) # rewrites to Union{Int, String}
+end
+```
+
+#### have
+```julia
+x = nothing
+@test !have(x)
+x = 1
+@test have(x)
+```
